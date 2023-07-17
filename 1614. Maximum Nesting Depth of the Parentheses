@@ -1,0 +1,31 @@
+int maxDepth(string s) {
+        // stack<char>st;
+        // int depth=0;
+        // for(int i=0;i<s.size();i++){
+        //     if(s[i]=='('){
+        //         st.push(s[i]);
+        //     }
+        //     else if(s[i]==')'){
+        //         int new_dep=st.size();
+        //         depth=max(new_dep,depth);
+        //         st.pop();
+        //     }
+        // }
+        // return depth;
+
+        //this is for no extra space and it is taking no extra space so it is optimal
+
+        int depth=0;
+        int ans=0;
+        for(auto it:s){
+            if(it=='('){
+                depth++;
+            }
+            else if(it==')'){
+                ans=max(depth,ans);
+                depth--;
+            }
+        }
+        return ans;
+
+    }
