@@ -1,0 +1,56 @@
+class Solution {
+public:
+    int number(char c){
+        if(c=='I')return 1;
+        else if(c=='V')return 5;
+        else if(c=='X')return 10;
+        else if(c=='L')return 50;
+        else if(c=='C')return 100;
+        else if(c=='D')return 500;
+        else if(c=='M')return 1000;
+        else{
+            return 0;
+        }    
+    }
+    int romanToInt(string s) {
+        int ans=number(s[0]);
+        int last=number(s[0]);
+        for(int i=1;i<s.size();i++){
+            int num=number(s[i]);
+            if(num>last){
+                ans=ans-(2*last)+num;
+            }
+            else{
+                ans+=num;
+                last=num;
+            }
+        }
+        return ans;
+    }
+};
+
+// second approach
+// class Solution {
+// public:
+//     int romanToInt(string s) {
+//         unordered_map<char,int>mpp;
+//         mpp['I'] = 1;
+//         mpp['V'] = 5;
+//         mpp['X'] = 10;
+//         mpp['L'] = 50;
+//         mpp['C'] = 100;
+//         mpp['D'] = 500;
+//         mpp['M'] = 1000;
+        
+//         int ans=0;
+//         for(int i=0;i<s.length();i++){
+//             if(mpp[s[i]]<mpp[s[i+1]]){
+//                 ans-=mpp[s[i]];
+//             }
+//             else{
+//                 ans+=mpp[s[i]];
+//             }
+//         }
+//         return ans;
+//     }
+// };
